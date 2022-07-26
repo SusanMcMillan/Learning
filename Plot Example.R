@@ -26,3 +26,19 @@ plot <- ggplot(data = d, aes(flipper_length_mm)) +
   theme(
     plot.title.position = "plot")
 plot
+
+
+plot2 <- ggplot(data = d, aes(flipper_length_mm)) +
+  geom_histogram(fill = "grey80", color = "grey70") +  #  fill and outline colors
+  geom_table(data = df, aes(x,y, label = table), parse = TRUE) +
+  ggtitle("Penguin Flipper Length") +
+  xlab("millimeters") +
+  ylab("Penguin Count") +
+  theme_minimal()+
+  theme(
+    plot.title.position = "plot")
+plot2
+
+# As PNG
+ggsave(plot = plot2, filename = "Penguin_Flipper_Length_Hist.png",
+       height = 7, width = 7, units = "in", dpi = 400)
